@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" lang="fr" content="Czyrok">
+
+  <title>Kepler</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/page.css">
+  <link rel="stylesheet" href="../css/setting.css">
+  <link rel="stylesheet" href="../css/download.css">
+  <link rel="stylesheet" href="../css/frame.css">
+  <link rel="stylesheet" href="../css/search_bar.css">
+  <link rel="stylesheet" href="../css/tab_menu.css">
+  <link rel="stylesheet" href="../css/bookmark.css">
+  <link rel="stylesheet" href="../css/popup.css">
+  <link rel="stylesheet" href="../css/ctrl_tab_menu.css">
+  <link rel="stylesheet" href="../css/alert.css">
+  <link rel="stylesheet" href="../css/button_disabled.css">
+  <link rel="stylesheet" href="../css/scroll_bar.css">
+  <link rel="stylesheet" href="../extra/css/circle/circle.css">
+  <link rel="stylesheet" href="../extra/css/balloon@1.2.0.min.css">
+  <link rel="stylesheet" href="../extra/css/dragula@3.7.2.min.css">
+
+  <script type="text/javascript" src="../js/array.js"></script>
+  <script type="text/javascript" src="../js/variable.js"></script>
+  <script type="text/javascript" src="../js/common.js"></script>
+  <script type="text/javascript" src="../js/visual.js"></script>
+  <script type="text/javascript" src="../js/bookmark.js"></script>
+  <script type="text/javascript" src="../js/download.js"></script>
+  <script type="text/javascript" src="../js/alert.js"></script>
+
+  <script type="text/javascript" src="../js/main.js" defer></script>
+  <script type="text/javascript" src="../js/dragula.js" defer></script>
+  <script type="text/javascript" src="../js/setup.js" defer></script>
+  <script type="text/javascript" src="../js/interval.js" defer></script>
+</head>
+
+<body>
+  <input id="search_bar_url" type="text">
+  <input id="copy_link" type="text">
+
+  <div class="app" id="frame">
+    <div id="border_to_resize"></div>
+
+    <button class="icon_left" id="icon"></button>
+    <button class="icon_left" id="back_disabled" onclick="goBackWebview()" disabled></button>
+    <button class="icon_left" id="forward_disabled" onclick="goForwardWebview()" disabled></button>
+    <button class="icon_left" id="refresh" onclick="refreshStopWebview()"></button>
+    <button class="icon_left" id="home" onclick="home()"></button>
+    <button class="icon_left app" id="pellet" onclick="download()"></button>
+    <button class="icon_left" id="download_button" onclick="download()"></button>
+    <button class="icon_left" id="radio_launch" onclick="launchRadio(1)"></button>
+
+    <div id="search_bar">
+      <input id="search_bar_input" type="text" placeholder="Search">
+
+      <button class="search_bar_icon" id="search_bar_button_enter" onclick="enter()"></button>
+      <button class="search_bar_icon" id="search_bar_button_bookmark"
+        onclick="addBookmark(tabGetElement.getTitle(), tabGetElement.getURL(), byID(`${tabID}_img`).src, '', true)"></button>
+
+      <div id="progress_bar_location"></div>
+    </div>
+
+    <button class="icon_right" id="pin" onclick="pin()"></button>
+    <button class="icon_right" id="minus" onclick="mini()"></button>
+    <button class="icon_right" id="expand" onclick="expand()"></button>
+    <button class="icon_right" id="crosssign" onclick="shut()"></button>
+
+    <div id="tab_menu"></div>
+  </div>
+
+  <div id="tab_location"></div>
+
+  <div id="ctrl_tab_menu"></div>
+
+  <a id="bookmark" href="/*~~*/ui/*~~*/">
+    <button id="plus" onclick="tempPopup('false')"></button>
+  </a>
+
+  <div id="popup" onclick="keepPopupVisibility()" oncontextmenu="keepPopupVisibility()">
+    <div id="center">
+      <label class="text" id="lp.p.n" for="name">Name</label>
+      <br>
+      <input class="classic" id="name" type="text" name="name">
+
+      <div id="link_div">
+        <label class="text" for="link">URL</label>
+        <br>
+        <input class="classic" id="link" type="text" name="link">
+      </div>
+
+      <label class="switch" id="folder">
+        <p id="lp.p.f">Folder?</p>
+        <input id="input_folder" onclick="changeFolderSliderStatus()" type="checkbox" name="folder">
+        <span class="slider"></span>
+      </label>
+
+      <button id="crosssign" onclick="closePopup()"></button>
+      <button id="validated" onclick="validatedPopup()"></button>
+      <button id="delete" onclick="deletePopup()"></button>
+    </div>
+  </div>
+
+  <div class="app dark page" id="download">
+    <button id="icon"></button>
+
+    <div class="content">
+      <h1 id="lp.d.title">Download</h1>
+
+      <div id="download_location">
+      </div>
+    </div>
+
+    <button id="crosssign" onclick="download()"></button>
+  </div>
+
+  <div class="app dark page" id="setting">
+    <button id="icon"></button>
+
+    <div class="content" id="setting_content">
+      <h1 id="lp.s.title">Setting</h1>
+
+      <div class="parameter" id="dl">
+        <h2 class="text" id="lp.s.dl.title">Default language</h2>
+
+        <div class="space">
+          <label class="default">
+            <p class="text">English</p>
+            <input id="en" onclick="applyLangChange('en')" type="radio" name="dl">
+            <span class="checkmark"></span>
+          </label>
+          <label class="default">
+            <p class="text">Français</p>
+            <input id="fr" onclick="applyLangChange('fr')" type="radio" name="dl">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="parameter" id="wd">
+        <h2 class="text" id="lp.s.wd.title">Window dimensions at start-up (px)</h2>
+
+        <div class="space" id="inline">
+          <input class="classic" id="width" type="number">
+          <p class="space text">x</p>
+          <input class="classic space" id="height" type="number">
+          <p class="space text" id="lp.s.wd.nb">(minimum: 630 x 350)</p>
+        </div>
+      </div>
+
+      <div class="parameter" id="dse">
+        <h2 class="text" id="lp.s.dse.title">Default search engine</h2>
+
+        <div class="space">
+          <label class="default">
+            <p class="text">Google</p>
+            <input id="google" onclick="searchEngine = 'google'" type="radio" name="dse">
+            <span class="checkmark"></span>
+          </label>
+          <label class="default">
+            <p class="text">DuckDuckGo</p>
+            <input id="duckduckgo" onclick="searchEngine = 'duckduckgo'" type="radio" name="dse">
+            <span class="checkmark"></span>
+          </label>
+          <label class="default">
+            <p class="text">Ecosia</p>
+            <input id="ecosia" onclick="searchEngine = 'ecosia'" type="radio" name="dse">
+            <span class="checkmark"></span>
+          </label>
+          <label class="default">
+            <p class="text">Startpage.com</p>
+            <input id="startpage.com" onclick="searchEngine = 'startpage.com'" type="radio" name="dse">
+            <span class="checkmark"></span>
+          </label>
+          <label class="default">
+            <p class="text">Microsoft Bing</p>
+            <input id="bing" onclick="searchEngine = 'bing'" type="radio" name="dse">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="parameter" id="t">
+        <h2 class="text" id="lp.s.dm.title">Dark mode</h2>
+
+        <div id="space">
+          <label class="switch">
+            <p class="text" id="lp.s.dm.hp">Default page</p>
+            <input id="dhp" onclick="changeDarkModeForHomePage()" type="checkbox" name="dhp">
+            <span class="slider"></span>
+          </label>
+          <label class="switch">
+            <p class="text" id="lp.s.dm.sp">Setting page</p>
+            <input id="dsp" onclick="changeDarkModeForSettingPage()" type="checkbox" name="dsp">
+            <span class="slider"></span>
+          </label>
+          <label class="switch">
+            <p class="text" id="lp.s.dm.dp">Download page</p>
+            <input id="ddp" onclick="changeDarkModeForDownloadPage()" type="checkbox" name="ddp">
+            <span class="slider"></span>
+          </label>
+          <label class="switch">
+            <p class="text" id="lp.s.dm.rp">Radio page</p>
+            <input id="drp" onclick="changeDarkModeForRadioPage()" type="checkbox" name="drp">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="parameter" id="ra">
+        <h2 class="text" id="lp.s.ra.title">Radio</h2>
+
+        <div class="space">
+          <label class="radio" aria-label="Dancefloor" data-balloon-pos="up">
+            <input id="dancefloor" onclick="applyRadioChange('dancefloor')" type="radio" name="ra">
+            <span id="dancefloor_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Rock FM" data-balloon-pos="up">
+            <input id="rockfm" onclick="applyRadioChange('rockfm')" type="radio" name="ra">
+            <span id="rockfm_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Funk" data-balloon-pos="up">
+            <input id="funk" onclick="applyRadioChange('funk')" type="radio" name="ra">
+            <span id="funk_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Classic" data-balloon-pos="up">
+            <input id="classic" onclick="applyRadioChange('classic')" type="radio" name="ra">
+            <span id="classic_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Black Music" data-balloon-pos="up">
+            <input id="blackmusic" onclick="applyRadioChange('blackmusic')" type="radio" name="ra">
+            <span id="blackmusic_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Deep Disco" data-balloon-pos="up">
+            <input id="deepdisco" onclick="applyRadioChange('deepdisco')" type="radio" name="ra">
+            <span id="deepdisco_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Road 66" data-balloon-pos="up">
+            <input id="road66" onclick="applyRadioChange('road66')" type="radio" name="ra">
+            <span id="road66_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Electro Chill" data-balloon-pos="up">
+            <input id="electrochill" onclick="applyRadioChange('electrochill')" type="radio" name="ra">
+            <span id="electrochill_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Classic Piano" data-balloon-pos="up">
+            <input id="classicpiano" onclick="applyRadioChange('classicpiano')" type="radio" name="ra">
+            <span id="classicpiano_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Rap FR" data-balloon-pos="up">
+            <input id="rapfr" onclick="applyRadioChange('rapfr')" type="radio" name="ra">
+            <span id="rapfr_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Rap US" data-balloon-pos="up">
+            <input id="rapus" onclick="applyRadioChange('rapus')" type="radio" name="ra">
+            <span id="rapus_logo" class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="parameter" id="r">
+        <div id="inline">
+          <h2 class="text" id="lp.s.r.title">Reset</h2>
+          <button id="reset" onclick="reset()"></button>
+        </div>
+      </div>
+
+      <div id="sc">
+        <h1 id="lp.sc.title">Shortcut</h1>
+
+        <div class="shortcut">
+          <h2 class="text" id="lp.sc.dsc.title">Default Shortcuts</h2>
+
+          <div class="space">
+            <div id="inline">
+              <p class="text">CTRL + ,</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cv">Open/Close the setting page</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + D</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cd">Open/Close the download page</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + R</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cr">Open/close the radio</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + T</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.ct">Open a new tab</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + SHIFT + T</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cst">Open a new private tab</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + W</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cw">Close the tab</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + S</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cs">Take a capture of the active tab</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + L</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cl">Copy the url of the active tab</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + H</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.ch">Load the home page in the tab</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + M</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cm">Mute the tab</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + TAB</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cta">Open the tab menu</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + CLIC</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cc">Open link in new tab</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + N</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cn">Open a new window</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + G</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cg">Close all windows except this one</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + F</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cf">Open the link of the active tab in new window</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + SHIFT + CLIC</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.csc">Open link in new window</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + B</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cb">Add the page in bookmarks</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + I</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.ci">Open/Close the developer tool of tab</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">F11</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.f11">Enter in full screen</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">ECHAP</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.echap">Leave the full screen</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">F5</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.f5">Reload the page without cache</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <i class="text" id="lp.f.by">Kepler x.x.x by Czyrok</i>
+      <p id="flaticon" class="text">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
+      <a id="blocker" href="https://github.com/cliqz-oss/adblocker/" target="_blank" rel="noopener noreferrer">
+        <img alt="powered by Cliqz" src="https://img.shields.io/badge/cliqz-powered-blue?logo=cliqz">
+      </a>
+    </div>
+
+    <div id="touch"></div>
+
+    <button id="crosssign" onclick="setting()"></button>
+  </div>
+
+  <div class="alert yellow" id="yellow_alert" onclick="yellowAlertInvisibility()">
+    <img id="logo_yellow_alert" src="../img/icon/alert/yellow_alert.png">
+    <p id="yellow_text">YELLOW ALERT</p>
+  </div>
+
+  <div class="alert red" id="red_alert" onclick="redAlertInvisibility()">
+    <img id="logo_red_alert" src="../img/icon/alert/red_alert.png">
+    <p id="red_text">RED ALERT</p>
+  </div>
+
+  <div class="alert blue" id="blue_alert" onclick="blueAlertInvisibility()">
+    <img id="logo_blue_alert" src="../img/icon/alert/blue_alert.png">
+    <p id="blue_text">BLUE ALERT</p>
+  </div>
+</body>
+
+</html>

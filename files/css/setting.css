@@ -1,0 +1,326 @@
+#setting .text {
+    margin: 0;
+}
+
+.dark#setting .text {
+    color: #eae8e8;
+}
+
+.light#setting .text {
+    color: #999999;
+}
+
+#setting #touch {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    cursor: not-allowed;
+}
+
+@keyframes touch_invisible {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+#setting #flaticon {
+    margin-top: 10px;
+}
+
+#setting a:link {
+    color: #2A93E4;
+}
+
+#setting a:visited {
+    color: #2A93E4;
+}
+
+#setting a:hover {
+    color: #2A93E4;
+}
+
+#setting a:active {
+    color: #0265B2;
+}
+
+#setting #blocker {
+    bottom: 0;
+}
+
+#setting #setting_content {
+    filter: blur(2px);
+}
+
+#setting .parameter, .shortcut {
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+#setting .space {
+    margin-left: 5px;
+}
+
+#setting #inline {
+    display: inline-flex;
+}
+
+#setting .classic {
+    width: 60px;
+    height: 23px;
+    font-size: 15.4px;
+}
+
+#setting .default {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    height: 25px;
+    margin-bottom: 5px;
+}
+
+#setting .default input {
+    display: none;
+}
+
+#setting .default .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #46474E;
+    border-radius: 50%;
+}
+
+#setting .default .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #eae8e8;
+}
+
+#setting .default input:checked~.checkmark:after {
+    display: block;
+}
+
+#setting .switch {
+    margin-left: 5px;
+}
+
+#setting #reset {
+    cursor: pointer;
+    background: url(../img/icon/reset_normal.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#setting #reset:hover {
+    background: url(../img/icon/reset_hover.png);
+    background-size: 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#setting #reset_spin {
+    margin-top: 5px;
+    margin-left: 5px;
+    background: url(../img/icon/reset_normal.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 100px;
+    animation: spin_refresh 1s ease;
+    cursor: not-allowed;
+    opacity: 0.2;
+}
+
+@keyframes spin_refresh {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(-360deg)
+    }
+}
+
+#setting .switch p {
+    position: absolute;
+    left: 60px;
+    width: max-content;
+    cursor: pointer;
+}
+
+#setting .radio {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 65px;
+    height: 65px;
+}
+
+#setting .radio input {
+    display: none;
+}
+
+#setting .radio .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 65px;
+    height: 65px;
+}
+
+#setting .radio #dancefloor_logo {
+    background: url(../img/radio/dancefloor.png);
+    background-size: 57px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #46474E;
+    border-radius: 3px;
+}
+
+#setting .radio input:checked~#dancefloor_logo {
+    background-color: #eae8e8;
+}
+
+#setting .radio #rockfm_logo {
+    background: url(../img/radio/rockfm.png);
+    background-size: 57px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #46474E;
+    border-radius: 3px;
+}
+
+#setting .radio input:checked~#rockfm_logo {
+    background-color: #eae8e8;
+}
+
+#setting .radio #funk_logo {
+    background: url(../img/radio/funk.png);
+    background-size: 57px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #46474E;
+    border-radius: 3px;
+}
+
+#setting .radio input:checked~#funk_logo {
+    background-color: #eae8e8;
+}
+
+#setting .radio #classic_logo {
+    background: url(../img/radio/classic.png);
+    background-size: 57px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #46474E;
+    border-radius: 3px;
+}
+
+#setting .radio input:checked~#classic_logo {
+    background-color: #eae8e8;
+}
+
+#setting .radio #blackmusic_logo {
+    background: url(../img/radio/blackmusic.png);
+    background-size: 57px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #46474E;
+    border-radius: 3px;
+}
+
+#setting .radio input:checked~#blackmusic_logo {
+    background-color: #eae8e8;
+}
+
+#setting .radio #deepdisco_logo {
+    background: url(../img/radio/deepdisco.png);
+    background-size: 57px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #46474E;
+    border-radius: 3px;
+}
+
+#setting .radio input:checked~#deepdisco_logo {
+    background-color: #eae8e8;
+}
+
+#setting .radio #road66_logo {
+    background: url(../img/radio/road66.png);
+    background-size: 57px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #46474E;
+    border-radius: 3px;
+}
+
+#setting .radio input:checked~#road66_logo {
+    background-color: #eae8e8;
+}
+
+#setting .radio #electrochill_logo {
+    background: url(../img/radio/electrochill.png);
+    background-size: 57px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #46474E;
+    border-radius: 3px;
+}
+
+#setting .radio input:checked~#electrochill_logo {
+    background-color: #eae8e8;
+}
+
+#setting .radio #classicpiano_logo {
+    background: url(../img/radio/classicpiano.png);
+    background-size: 57px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #46474E;
+    border-radius: 3px;
+}
+
+#setting .radio input:checked~#classicpiano_logo {
+    background-color: #eae8e8;
+}
+
+#setting .radio #rapfr_logo {
+    background: url(../img/radio/rapfr.png);
+    background-size: 57px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #46474E;
+    border-radius: 3px;
+}
+
+#setting .radio input:checked~#rapfr_logo {
+    background-color: #eae8e8;
+}
+
+#setting .radio #rapus_logo {
+    background: url(../img/radio/rapus.png);
+    background-size: 57px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #46474E;
+    border-radius: 3px;
+}
+
+#setting .radio input:checked~#rapus_logo {
+    background-color: #eae8e8;
+}

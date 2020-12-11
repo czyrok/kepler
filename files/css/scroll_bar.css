@@ -1,0 +1,36 @@
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #999999;
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #eae8e8;
+}
+
+#ctrl_tab_menu::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+#tab_menu::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+#bookmark::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}

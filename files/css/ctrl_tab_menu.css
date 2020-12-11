@@ -1,0 +1,99 @@
+#ctrl_tab_menu {
+    display: none;
+    background-color: #1B1C1E;
+    border-radius: 3px;
+    height: 80px;
+    width: auto;
+    max-width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 152;
+    overflow: auto hidden;
+}
+
+#ctrl_tab_menu .ctrl_tab_content {
+    margin: 5px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 50px;
+    min-width: 50px;
+    height: 70px;
+}
+
+#ctrl_tab_menu .ctrl_tab_content+.ctrl_tab_content {
+    margin-left: 0;
+}
+
+#ctrl_tab_menu .ctrl_tab_content input {
+    display: none;
+}
+
+#ctrl_tab_menu .ctrl_tab_content .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    -webkit-transition: .1s;
+}
+
+#ctrl_tab_menu .ctrl_tab_content input:checked ~ .checkmark {
+    background-color: #eae8e8;
+    border-radius: 3px;
+}
+
+#ctrl_tab_menu .ctrl_tab_content .checkmark:hover {
+    background-color: #3D3F44;
+    border-radius: 3px;
+}
+
+#ctrl_tab_menu .ctrl_tab_content .checkmark p {
+    position: absolute;
+    margin: 0;
+    margin-top: 50px;
+    width: 50px;
+    font-size: 14px;
+    color: #eae8e8;
+    text-align: center;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#ctrl_tab_menu .ctrl_tab_content .checkmark img {
+    position: absolute;
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+}
+
+#ctrl_tab_menu .ctrl_tab_content .checkmark button {
+    opacity: 0;
+    background: url(../img/icon/crosssign_normal.png);
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-transition: .1s;
+    position: absolute;
+    padding: 0;
+    border: solid 1px #0C0C0E;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #2D2E32;
+}
+
+#ctrl_tab_menu .ctrl_tab_content:hover .checkmark button {
+    opacity: 1;
+}
+
+#ctrl_tab_menu .ctrl_tab_content .checkmark button:hover {
+    background: url(../img/icon/crosssign_hover.png);
+    background-size: 13px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #3D3F44;
+}

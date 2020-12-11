@@ -1,0 +1,46 @@
+{
+    "appId": "kepler.app",
+    "productName": "Kepler",
+    "artifactName": "${productName} Update Setup ${version}.${ext}",
+    "win": {
+        "icon": "files/img/icon/app/icon.ico",
+        "target": [
+            "nsis"
+        ]
+    },
+    "nsis": {
+        "installerIcon": "files/img/icon/app/installer.ico",
+        "uninstallerIcon": "files/img/icon/app/icon.ico",
+        "installerSidebar": "files/img/icon/app/sidebar.bmp",
+        "uninstallDisplayName": "${productName}",
+        "oneClick": true,
+        "allowToChangeInstallationDirectory": false,
+        "perMachine": false,
+        "createDesktopShortcut": false,
+        "runAfterFinish": false
+    },
+    "fileAssociations": {
+        "ext": [
+            "htm",
+            "html",
+            "shtml",
+            "xht",
+            "xhtml",
+            "jpg",
+            "jpeg",
+            "png",
+            "pdf"
+        ],
+        "name": "Files",
+        "role": "Viewer"
+    },
+    "protocols": {
+        "name": "URLs",
+        "schemes": [
+            "http",
+            "https",
+            "ftp"
+        ],
+        "role": "Viewer"
+    }
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" lang="fr" content="Czyrok">
+
+  <title>Kepler Radio</title>
+
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/radio/style.css">
+  <link rel="stylesheet" href="../../css/frame.css">
+  <link rel="stylesheet" href="../../css/page.css">
+  <link rel="stylesheet" href="../../css/setting.css">
+  <link rel="stylesheet" href="../../css/download.css">
+  <link rel="stylesheet" href="../../css/radio/radio_slider_volume.css">
+  <link rel="stylesheet" href="../../css/alert.css">
+  <link rel="stylesheet" href="../../css/button_disabled.css">
+  <link rel="stylesheet" href="../../css/scroll_bar.css">
+  <link rel="stylesheet" href="../../extra/css/circle/circle.css">
+  <link rel="stylesheet" href="../../extra/css/balloon@1.2.0.min.css">
+
+  <script type="text/javascript" src="../../js/array.js"></script>
+  <script type="text/javascript" src="../../js/variable.js"></script>
+  <script type="text/javascript" src="../../js/common.js"></script>
+  <script type="text/javascript" src="../../js/visual.js"></script>
+  <script type="text/javascript" src="../../js/download.js"></script>
+  <script type="text/javascript" src="../../js/alert.js"></script>
+
+  <script type="text/javascript" src="../../js/radio/main.js" defer></script>
+</head>
+
+<body>
+  <div class="radio" id="frame">
+    <div id="border_to_resize"></div>
+
+    <div class="left">
+      <button class="icon_left" id="icon"></button>
+      <button class="icon_left radio" id="pellet" onclick="download()"></button>
+      <button class="icon_left" id="download_button" onclick="download()"></button>
+      <button class="icon_left" id="setting_button" onclick="setting()"></button>
+    </div>
+
+    <button class="icon_right" id="crosssign" onclick="shut()"></button>
+    <button class="icon_right" id="minus" onclick="mini()"></button>
+    <button class="icon_right" id="pin" onclick="pin()"></button>
+  </div>
+
+  <div class="dark" id="radio">
+    <button id="icon"></button>
+
+    <div id="up">
+      <img id="music_cover" src=""
+        onerror="byID('music_cover').setAttribute('src', '../../img/icon/refresh_normal.png')">
+
+      <h1 id="music_name"></h1>
+      <h2 class="text" id="music_artist"></h2>
+    </div>
+
+    <div id="down">
+      <button id="play" onclick="playPauseRadio()"></button>
+
+      <div id="slider">
+        <!-- <button class="slider_icon" id="volume_down" onclick="changeVolumeToDown()"></button> -->
+        <input id="slider_input" type="range" min="0" max="100" value="50">
+        <!-- <button class="slider_icon" id="volume_up" onclick="changeVolumeToUp()"></button> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="radio dark page" id="download">
+    <button id="icon"></button>
+
+    <div class="content">
+      <h1 id="lp.d.title">Download</h1>
+
+      <div id="download_location">
+      </div>
+    </div>
+
+    <button id="crosssign" onclick="download()"></button>
+  </div>
+
+  <div class="dark radio page" id="setting">
+    <button id="icon"></button>
+
+    <div class="content" id="setting_content">
+      <h1 id="lp.s.title">Setting</h1>
+
+      <div class="parameter" id="dl">
+        <h2 class="text" id="lp.s.dl.title">Default language</h2>
+
+        <div class="space">
+          <label class="default">
+            <p class="text">English</p>
+            <input id="en" onclick="applyLangChange('en')" type="radio" name="dl">
+            <span class="checkmark"></span>
+          </label>
+          <label class="default">
+            <p class="text">Français</p>
+            <input id="fr" onclick="applyLangChange('fr')" type="radio" name="dl">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="parameter" id="t">
+        <h2 class="text" id="lp.s.dm.title">Dark mode</h2>
+
+        <div id="space">
+          <label class="switch">
+            <p class="text" id="lp.s.dm.sp">Setting page</p>
+            <input id="dsp" onclick="changeDarkModeForSettingPage()" type="checkbox" name="dsp">
+            <span class="slider"></span>
+          </label>
+          <label class="switch">
+            <p class="text" id="lp.s.dm.dp">Download page</p>
+            <input id="ddp" onclick="changeDarkModeForDownloadPage()" type="checkbox" name="ddp">
+            <span class="slider"></span>
+          </label>
+          <label class="switch">
+            <p class="text" id="lp.s.dm.rp">Radio page</p>
+            <input id="drp" onclick="changeDarkModeForRadioPage()" type="checkbox" name="drp">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="parameter" id="ra">
+        <h2 class="text" id="lp.s.ra.title">Radio</h2>
+
+        <div class="space">
+          <label class="radio" aria-label="Dancefloor" data-balloon-pos="up">
+            <input id="dancefloor" onclick="applyRadioChange('dancefloor')" type="radio" name="ra">
+            <span id="dancefloor_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Rock FM" data-balloon-pos="up">
+            <input id="rockfm" onclick="applyRadioChange('rockfm')" type="radio" name="ra">
+            <span id="rockfm_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Funk" data-balloon-pos="up">
+            <input id="funk" onclick="applyRadioChange('funk')" type="radio" name="ra">
+            <span id="funk_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Classic" data-balloon-pos="up">
+            <input id="classic" onclick="applyRadioChange('classic')" type="radio" name="ra">
+            <span id="classic_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Black Music" data-balloon-pos="up">
+            <input id="blackmusic" onclick="applyRadioChange('blackmusic')" type="radio" name="ra">
+            <span id="blackmusic_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Deep Disco" data-balloon-pos="up">
+            <input id="deepdisco" onclick="applyRadioChange('deepdisco')" type="radio" name="ra">
+            <span id="deepdisco_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Road 66" data-balloon-pos="up">
+            <input id="road66" onclick="applyRadioChange('road66')" type="radio" name="ra">
+            <span id="road66_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Electro Chill" data-balloon-pos="up">
+            <input id="electrochill" onclick="applyRadioChange('electrochill')" type="radio" name="ra">
+            <span id="electrochill_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Classic Piano" data-balloon-pos="up">
+            <input id="classicpiano" onclick="applyRadioChange('classicpiano')" type="radio" name="ra">
+            <span id="classicpiano_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Rap FR" data-balloon-pos="up">
+            <input id="rapfr" onclick="applyRadioChange('rapfr')" type="radio" name="ra">
+            <span id="rapfr_logo" class="checkmark"></span>
+          </label>
+          <label class="radio" aria-label="Rap US" data-balloon-pos="up">
+            <input id="rapus" onclick="applyRadioChange('rapus')" type="radio" name="ra">
+            <span id="rapus_logo" class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="parameter" id="r">
+        <div id="inline">
+          <h2 class="text" id="lp.s.r.title">Reset</h2>
+          <button id="reset" onclick="reset()"></button>
+        </div>
+      </div>
+
+      <div id="sc">
+        <h1 id="lp.sc.title">Shortcut</h1>
+
+        <div class="shortcut">
+          <h2 class="text" id="lp.sc.dsc.title">Default Shortcuts</h2>
+
+          <div class="space">
+            <div id="inline">
+              <p class="text">CTRL + ,</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cv">Open/Close the settings</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + D</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cd">Open/Close the download page</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + N</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cn">Open a new window</p>
+            </div>
+            <br>
+            <div id="inline">
+              <p class="text">CTRL + G</p><b class="space text">=></b>
+              <p class="space text" id="lp.sc.dsc.cg">Close all windows except this one</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <i class="text" id="lp.f.by">Kepler x.x.x by Czyrok</i>
+      <p id="flaticon" class="text">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
+      <a id="blocker" href="https://github.com/cliqz-oss/adblocker/" target="_blank" rel="noopener noreferrer">
+        <img alt="powered by Cliqz" src="https://img.shields.io/badge/cliqz-powered-blue?logo=cliqz">
+      </a>
+    </div>
+
+    <div id="touch"></div>
+
+    <button id="crosssign" onclick="setting()"></button>
+  </div>
+
+  <div class="alert yellow" id="yellow_alert" onclick="yellowAlertInvisibility()">
+    <img id="logo_yellow_alert" src="../../img/icon/alert/yellow_alert.png">
+    <p id="yellow_text">YELLOW ALERT</p>
+  </div>
+
+  <div class="alert red" id="red_alert" onclick="redAlertInvisibility()">
+    <img id="logo_red_alert" src="../../img/icon/alert/red_alert.png">
+    <p id="red_text">RED ALERT</p>
+  </div>
+
+  <div class="alert blue" id="blue_alert" onclick="blueAlertInvisibility()">
+    <img id="logo_blue_alert" src="../../img/icon/alert/blue_alert.png">
+    <p id="blue_text">BLUE ALERT</p>
+  </div>
+</body>
+
+</html>

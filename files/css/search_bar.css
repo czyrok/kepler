@@ -1,0 +1,104 @@
+#search_bar {
+    height: 25px;
+    background-color: #2D2E32;
+    border-radius: 3px;
+    margin-right: 50px;
+    margin-left: 50px;
+    -webkit-app-region: none;
+    -webkit-transition: .2s;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 730px) {
+    #search_bar {
+        width: calc(100% - 535px);
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    #search_bar {
+        width: calc(100% - 435px);
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+
+#search_bar_input {
+    -webkit-app-region: none;
+    float: left;
+    outline-style: none;
+    height: 23px;
+    width: calc(100% - 54px);
+    font-family: "NotoSans-Regular";
+    font-size: 15.4px;
+    background-color: #2D2E32;
+    color: #eae8e8;
+    border: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    opacity: 0.2;
+    -webkit-transition: .1s;
+}
+
+#search_bar #search_bar_input:focus {
+    opacity: 1;
+}
+
+.search_bar_icon {
+    float: left;
+    cursor: pointer;
+}
+
+#search_bar_button_enter {
+    background: url(../img/icon/enter_normal.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#search_bar_button_enter:hover {
+    background: url(../img/icon/enter_hover.png);
+    background-size: 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #3D3F44;
+}
+
+#search_bar_button_bookmark {
+    background: url(../img/icon/bookmark_normal.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+#search_bar_button_bookmark:hover {
+    background: url(../img/icon/bookmark_hover.png);
+    background-size: 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #3D3F44;
+}
+
+#search_bar_active #search_bar_button_bookmark {
+    border-radius: 0;
+}
+
+.progress_bar {
+  height: 2px;
+  position: relative;
+  background-color: #999999;
+  -webkit-transition: .1s;
+  top: 22px;
+}
+
+.hidden_progress_bar {
+  height: 0;
+  position: relative;
+  background-color: #999999;
+  -webkit-transition: .1s;
+  top: 25px;
+}

@@ -1,0 +1,323 @@
+#download #download_location {
+    margin-left: 15px;
+    width: 280px;
+}
+
+#download .download {
+    height: 75px;
+    width: 100%;
+    border-radius: 5px;
+    -webkit-transition: .1s;
+}
+
+#download .download:hover {
+    background-color: #3D3F44;
+}
+
+#download .download+.download {
+    margin-top: 10px;
+}
+
+#download .download div {
+    position: absolute;
+    right: 0;
+    display: inline-flex;
+}
+
+#download .left, .right {
+    margin: 0;
+}
+
+#download .left {
+    font-size: 18.5px;
+    margin-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 220px;
+}
+
+#download p.void {
+    height: 25px;
+    margin: 0;
+}
+
+#download .left.bottom {
+    max-width: 132.5px;
+}
+
+#download .right {
+    font-size: 18.5px;
+    margin-right: 5px;
+    max-width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#download .right.bottom {
+    max-width: 132.5px;
+    position: absolute;
+    right: 0;
+}
+
+.dark#download .right {
+    color: #eae8e8;
+}
+
+.light#download .right {
+    color: #999999;
+}
+
+.dark#download .left {
+    color: #eae8e8;
+}
+
+.light#download .left {
+    color: #999999;
+}
+
+#download .download:hover .right {
+    color: #eae8e8;
+}
+
+#download .download:hover .left {
+    color: #eae8e8;
+}
+
+#download button.void {
+    margin-top: 12px;
+    margin-left: 12px;
+    padding: 0;
+    z-index: 1;
+    position: relative;
+    background-color: transparent;
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .state {
+    margin-top: 12px;
+    margin-left: 12px;
+    padding: 0;
+    z-index: 1;
+    position: relative;
+    background: url(../img/icon/information_normal.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .state:hover {
+    background: url(../img/icon/information_hover.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .c100:hover .state {
+    margin-top: 9.5px;
+    margin-left: 9.5px;
+    height: 30px;
+    width: 30px;
+    background: url(../img/icon/information_normal.png);
+    background-size: 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .c100:hover .state:hover {
+    background: url(../img/icon/information_hover.png);
+    background-size: 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .pause {
+    margin-top: 12px;
+    margin-left: 12px;
+    padding: 0;
+    z-index: 1;
+    position: relative;
+    background: url(../img/icon/pause_normal.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#download .pause:hover {
+    background: url(../img/icon/pause_hover.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .c100:hover .pause {
+    margin-top: 9.5px;
+    margin-left: 9.5px;
+    height: 30px;
+    width: 30px;
+    background: url(../img/icon/pause_normal.png);
+    background-size: 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .c100:hover .pause:hover {
+    background: url(../img/icon/pause_hover.png);
+    background-size: 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+#download .resume {
+    margin-top: 12px;
+    margin-left: 12px;
+    padding: 0;
+    z-index: 1;
+    position: relative;
+    background: url(../img/icon/play_normal.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#download .resume:hover {
+    background: url(../img/icon/play_hover.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .c100:hover .resume {
+    margin-top: 9.5px;
+    margin-left: 9.5px;
+    height: 30px;
+    width: 30px;
+    background: url(../img/icon/play_normal.png);
+    background-size: 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .c100:hover .resume:hover {
+    background: url(../img/icon/play_hover.png);
+    background-size: 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .reload {
+    margin-top: 12px;
+    margin-left: 12px;
+    padding: 0;
+    z-index: 1;
+    position: relative;
+    background: url(../img/icon/reset_normal.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#download .reload:hover {
+    background: url(../img/icon/reset_hover.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .c100:hover .reload {
+    margin-top: 9.5px;
+    margin-left: 9.5px;
+    height: 30px;
+    width: 30px;
+    background: url(../img/icon/reset_normal.png);
+    background-size: 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .c100:hover .reload:hover {
+    background: url(../img/icon/reset_hover.png);
+    background-size: 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .folder {
+    margin-top: 12px;
+    margin-left: 12px;
+    padding: 0;
+    z-index: 1;
+    position: relative;
+    background: url(../img/icon/folder_normal.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#download .folder:hover {
+    background: url(../img/icon/folder_hover.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .c100:hover .folder {
+    margin-top: 9.5px;
+    margin-left: 9.5px;
+    height: 30px;
+    width: 30px;
+    background: url(../img/icon/folder_normal.png);
+    background-size: 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .c100:hover .folder:hover {
+    background: url(../img/icon/folder_hover.png);
+    background-size: 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#download .cancel {
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    background: url(../img/icon/crosssign_normal.png);
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    padding: 0;
+    border: solid 1px #0C0C0E;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #2D2E32;
+}
+
+#download .download:hover .cancel {
+    opacity: 1;
+}
+
+#download .cancel:hover {
+    background: url(../img/icon/crosssign_hover.png);
+    background-size: 13px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #3D3F44;
+}
+
+#download .cancel_disabled {
+    position: absolute;
+    padding: 0;
+    height: 0;
+    width: 0;
+    opacity: 0;
+}

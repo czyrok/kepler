@@ -1,0 +1,141 @@
+@keyframes alert_visibility {
+  100% {
+    right: 0
+  }
+}
+
+@keyframes alert_invisibility {
+  0% {
+    right: 0
+  }
+  100% {
+    right: -410
+  }
+}
+
+.alert {
+  z-index: 200;
+  bottom: 60px;
+  position: absolute;
+  height: auto;
+  max-width: 400px;
+  width: auto;
+  cursor: pointer;
+  right: -410px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.alert img {
+  width: 18px;
+  height: 18px;
+  top: 5px;
+  left: 6px;
+  position: absolute;
+}
+
+.alert button {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 15px;
+  cursor: pointer;
+  z-index: 1;
+  opacity: 0;
+}
+
+.alert:hover button {
+  opacity: 1;
+}
+
+.alert p {
+  font-weight: 600;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  margin: 0;
+  margin-left: 30px;
+  padding-left: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 8px;
+}
+
+/* yellow alert */
+
+.alert.yellow {
+  background-color: #c1970a;
+}
+
+.alert.yellow button {
+  background-color: #c1970a;
+  background: url(../img/icon/alert/crosssign_yellow_alert.png);
+  background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.alert.yellow:hover button {
+  background-color: #c1970a;
+}
+
+.alert.yellow button:hover {
+  background-color: #c1970a;
+}
+
+.alert.yellow p {
+  background-color: #eac546;
+  color: #c1970a;
+}
+
+/* red alert */
+
+.alert.red {
+  background-color: #c10a0a;
+}
+
+.alert.red button {
+  background-color: #c10a0a;
+  background: url(../img/icon/alert/crosssign_red_alert.png);
+  background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.alert.red:hover button {
+  background-color: #c10a0a;
+}
+
+.alert.red button:hover {
+  background-color: #c10a0a;
+}
+
+.alert.red p {
+  background-color: #ea4646;
+  color: #c10a0a;
+}
+
+/* blue alert */
+
+.alert.blue {
+  background-color: #0265B2;
+}
+
+.alert.blue button {
+  background-color: #0265B2;
+  background: url(../img/icon/alert/crosssign_blue_alert.png);
+  background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.alert.blue:hover button {
+  background-color: #0265B2;
+}
+
+.alert.blue button:hover {
+  background-color: #0265B2;
+}
+
+.alert.blue p {
+  background-color: #2A93E4;
+  color: #0265B2;
+}

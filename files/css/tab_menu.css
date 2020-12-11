@@ -1,0 +1,241 @@
+#tab_menu {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-app-region: none;
+    position: absolute;
+    top: 25px;
+    width: 100%;
+    max-width: auto;
+    height: 25px;
+    overflow: auto;
+}
+
+.tab_content {
+    display: inline-flex;
+    position: relative;
+    cursor: pointer;
+    width: auto;
+    min-width: 50px;
+    height: 25px;
+    flex: 1 1;
+}
+
+.tab_content input {
+    display: none;
+}
+
+.tab_content .checkmark {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    top: 0;
+    left: 0;
+    width: auto;
+    min-width: 50px;
+    height: 25px;
+    -webkit-transition: .1s;
+    flex: 1 1;
+    background-color: #232627;
+}
+
+.tab_content input:checked~.checkmark {
+    background-color: #1B1C1E;
+}
+
+.tab_content .checkmark:hover {
+    background-color: #3D3F44;
+}
+
+.tab_content .checkmark .crosssign_tab {
+    opacity: 0;
+    height: 25px;
+    width: 25px;
+    background: url(../img/icon/crosssign_normal.png);
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0;
+}
+
+.tab_content:hover .checkmark .crosssign_tab {
+    opacity: 1;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    background: url(../img/icon/crosssign_normal.png);
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tab_content .checkmark .crosssign_tab:hover {
+    background: url(../img/icon/crosssign_hover.png);
+    background-size: 13px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tab_content input:checked~.checkmark .crosssign_tab {
+    opacity: 1;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    background: url(../img/icon/crosssign_normal.png);
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tab_content input:checked~.checkmark .crosssign_tab:hover {
+    background: url(../img/icon/crosssign_hover.png);
+    background-size: 13px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tab_content .checkmark p {
+    margin: 0;
+    margin-top: 2.5px;
+    width: auto;
+    font-size: 14px;
+    color: #eae8e8;
+    height: 20px;
+    flex: 1 1;
+    text-align: center;
+    opacity: .2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tab_content[private=true] .checkmark p {
+    font-style: italic;
+}
+
+.tab_content input:checked~.checkmark p {
+    opacity: 1;
+}
+
+.tab_content .checkmark:hover p {
+    opacity: 1;
+}
+
+.tab_content .checkmark img {
+    margin: 5px;
+    width: 15px;
+    height: 15px;
+    opacity: .2;
+}
+
+.tab_content input:checked~.checkmark img {
+    opacity: 1;
+}
+
+.tab_content .checkmark:hover img {
+    opacity: 1;
+}
+
+.tab_content .checkmark .volume_tab {
+    cursor: pointer;
+    position: absolute;
+    background: url(../img/icon/volume_up_normal.png);
+    background-size: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #232627;
+    right: 0;
+    opacity: 0;
+}
+
+.tab_content input:checked~.checkmark .volume_tab {
+    background-color: #1B1C1E;
+    opacity: 1;
+}
+
+.tab_content .checkmark:hover .volume_tab {
+    background-color: #3D3F44;
+}
+
+.tab_content:hover .checkmark .volume_tab {
+    opacity: 1;
+}
+
+.tab_content .checkmark .volume_tab:hover {
+    background: url(../img/icon/volume_up_hover.png);
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #3D3F44;
+}
+
+.tab_content .checkmark .mute_tab {
+    cursor: pointer;
+    position: absolute;
+    background: url(../img/icon/mute_normal.png);
+    background-size: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    right: 0;
+    background-color: #232627;
+    opacity: 0;
+}
+
+.tab_content input:checked~.checkmark .mute_tab {
+    background-color: #1B1C1E;
+    opacity: 1;
+}
+
+.tab_content .checkmark:hover .mute_tab {
+    background-color: #3D3F44;
+}
+
+.tab_content:hover .checkmark .mute_tab {
+    opacity: 1;
+}
+
+.tab_content .checkmark .mute_tab:hover {
+    background: url(../img/icon/mute_hover.png);
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #3D3F44;
+}
+
+.tab_content .checkmark .invisible_tab {
+    background: url(../img/icon/volume_up_normal.png);
+    background-size: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 0;
+    padding: 0;
+    right: 0;
+}
+
+.tab_content input:checked~.checkmark .invisible_tab {
+    background-color: #1B1C1E;
+}
+
+.tab_content .checkmark:hover .invisible_tab {
+    background-color: #3D3F44;
+}
+
+#frame #more_tab {
+    -webkit-app-region: none;
+    cursor: pointer;
+    right: 0;
+    position: absolute;
+    top: 25px;
+    background: url(../img/icon/more_tab_normal.png);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#frame #more_tab:hover {
+    background: url(../img/icon/more_tab_hover.png);
+    background-size: 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #3D3F44;
+}

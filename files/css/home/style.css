@@ -1,0 +1,63 @@
+.dark {
+    background-color: #242528;
+}
+
+.dark #icon {
+    height: 150px;
+    width: 150px;
+    border: none;
+    outline-style:none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(../../img/icon/app/font_icon_light.png);
+    filter: blur(8px);
+    background-size: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.light {
+    background-color: #f5f5f5;
+}
+
+.light #icon {
+    height: 150px;
+    width: 150px;
+    border: none;
+    outline-style:none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(../../img/icon/app/font_icon_dark.png);
+    filter: blur(8px);
+    background-size: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#setting {
+    border: none;
+    outline-style:none;
+    -webkit-transition: .1s;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+    background: url(../../img/icon/setting_normal.png);
+    background-size: 28px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 35px;
+    width: 35px;
+}
+
+#setting:hover {
+    background: url(../../img/icon/setting_hover.png);
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+}

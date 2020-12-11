@@ -1,0 +1,331 @@
+.app#frame {
+  position: relative;
+  z-index: 150;
+  background-color: #1B1C1E;
+  width: 100%;
+  height: 50px;
+  -webkit-app-region: drag;
+  display: inline-flex;
+}
+
+.radio#frame {
+  position: relative;
+  z-index: 150;
+  background-color: #1B1C1E;
+  width: 100%;
+  height: 25px;
+  -webkit-app-region: drag;
+}
+
+.radio#frame .left {
+  display: inline-flex;
+}
+
+#frame .icon_left {
+  cursor: pointer;
+  -webkit-app-region: none;
+}
+
+#frame #icon {
+  cursor: default;
+  background: url(../img/icon/app/icon.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #back {
+  background: url(../img/icon/arrow_left_normal.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #back:hover {
+  background: url(../img/icon/arrow_left_hover.png);
+  background-size: 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #forward {
+  background: url(../img/icon/arrow_right_normal.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #forward:hover {
+  background: url(../img/icon/arrow_right_hover.png);
+  background-size: 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #refresh {
+  background: url(../img/icon/refresh_normal.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #refresh:hover {
+  background: url(../img/icon/refresh_hover.png);
+  background-size: 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #refresh_crosssign {
+  background: url(../img/icon/crosssign_normal.png);
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #refresh_crosssign:hover {
+  background: url(../img/icon/crosssign_hover.png);
+  background-size: 17px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #home {
+  background: url(../img/icon/home_normal.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #home:hover {
+  background: url(../img/icon/home_hover.png);
+  background-size: 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #pellet {
+  opacity: 0;
+  position: absolute;
+  background: url(../img/icon/pellet_hover.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame .app#pellet {
+  left: 125px;
+}
+
+#frame .radio#pellet {
+  left: 25px;
+}
+
+#frame #pellet:hover {
+  background: url(../img/icon/pellet_hover.png);
+  background-size: 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #download_button {
+  background: url(../img/icon/download_normal.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #download_button:hover {
+  background: url(../img/icon/download_hover.png);
+  background-size: 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #download_button_active {
+  background: url(../img/icon/download_hover.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #download_button_active:hover {
+  background-color: #3D3F44;
+  background-size: 19px;
+}
+
+#frame #pellet:hover~#download_button {
+  background: url(../img/icon/download_hover.png);
+  background-size: 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #pellet:hover~#download_button_active {
+  background-color: #3D3F44;
+  background-size: 19px;
+}
+
+#frame #setting_button {
+  background: url(../img/icon/setting_normal.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #setting_button:hover {
+  background: url(../img/icon/setting_hover.png);
+  background-size: 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #setting_button_active {
+  background: url(../img/icon/setting_hover.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #setting_button_active:hover {
+  background-color: #3D3F44;
+  background-size: 19px;
+}
+
+#frame #radio_launch {
+  background: url(../img/icon/radio_normal.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #radio_launch:hover {
+  background: url(../img/icon/radio_hover.png);
+  background-size: 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #radio_launch_active {
+  background: url(../img/icon/radio_hover.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #radio_launch_active:hover {
+  background-color: #3D3F44;
+  background-size: 19px;
+}
+
+.app#frame .icon_right {
+  cursor: pointer;
+  -webkit-app-region: none;
+}
+
+.radio#frame .icon_right {
+  cursor: pointer;
+  -webkit-app-region: none;
+  float: right;
+}
+
+#frame #pin {
+  background: url(../img/icon/pin_normal.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #pin:hover {
+  background: url(../img/icon/pin_hover.png);
+  background-size: 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #pin_active {
+  background: url(../img/icon/pin_hover.png);
+  background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#frame #pin_active:hover {
+  background-color: #3D3F44;
+  background-size: 19px;
+}
+
+#frame #minus {
+  background: url(../img/icon/minus_normal.png);
+  background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 45px;
+}
+
+#frame #minus:hover {
+  background: url(../img/icon/minus_hover.png);
+  background-size: 13px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #expand {
+  background: url(../img/icon/expand_normal.png);
+  background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 45px;
+}
+
+#frame #expand:hover {
+  background: url(../img/icon/expand_hover.png);
+  background-size: 13px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #reduce {
+  background: url(../img/icon/reduce_normal.png);
+  background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 45px;
+}
+
+#frame #reduce:hover {
+  background: url(../img/icon/reduce_hover.png);
+  background-size: 13px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3D3F44;
+}
+
+#frame #crosssign {
+  background: url(../img/icon/crosssign_normal.png);
+  background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0C0C0E;
+  width: 45px;
+}
+
+#frame #crosssign:hover {
+  background: url(../img/icon/crosssign_hover.png);
+  background-size: 13px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #F04747;
+}

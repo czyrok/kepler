@@ -1,0 +1,44 @@
+{
+    "appId": "kepler.app",
+    "productName": "Kepler",
+    "win": {
+      "icon": "files/img/icon/app/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+    	"license": "LICENSE.txt",
+      "installerIcon": "files/img/icon/app/installer.ico",
+      "uninstallerIcon": "files/img/icon/app/icon.ico",
+      "installerSidebar": "files/img/icon/app/sidebar.bmp",
+      "uninstallDisplayName": "${productName}",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": true
+    },
+    "fileAssociations": {
+      "ext": [
+        "htm",
+        "html",
+        "shtml",
+        "xht",
+        "xhtml",
+        "jpg",
+        "jpeg",
+        "png",
+        "pdf"
+      ],
+      "name": "Files",
+      "role": "Viewer"
+    },
+    "protocols": {
+      "name": "URLs",
+      "schemes": [
+        "http",
+        "https",
+        "ftp"
+      ],
+      "role": "Viewer"
+    }
+}

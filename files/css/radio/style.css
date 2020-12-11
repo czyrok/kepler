@@ -1,0 +1,129 @@
+#radio {
+    top: 25px;
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 25px);
+}
+
+.dark#radio {
+    background-color: #242528;
+}
+
+.light#radio {
+    background-color: #f5f5f5;
+}
+
+.dark#radio #icon {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(../../img/icon/app/font_icon_light.png);
+    filter: blur(8px);
+    background-size: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.light#radio #icon {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(../../img/icon/app/font_icon_dark.png);
+    filter: blur(8px);
+    background-size: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#radio img {
+    height: 105px;
+    width: 105px;
+    margin: 10px;
+    position: absolute;
+    top: 0;
+    border-radius: 3px;
+}
+
+#radio h1 {
+    margin: 0;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-left: 125px;
+    width: calc(100% - 135px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#radio h2 {
+    margin: 0;
+    margin-left: 140px;
+    width: calc(100% - 150px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dark#radio h1 {
+    color: #999999;
+}
+
+.light#radio h1 {
+    color: #4F4F4F;
+}
+
+.dark#radio .text {
+    color: #eae8e8;
+}
+
+.light#radio .text {
+    color: #999999;
+}
+
+#radio #down {
+    display: inline-flex;
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+#radio #play {
+    height: 50px;
+    width: 50px;
+    background: url(../../img/icon/play_normal.png);
+    background-size: 28px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#radio #play:hover {
+    background: url(../../img/icon/play_hover.png);
+    background-size: 29px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#radio #pause {
+    height: 50px;
+    width: 50px;
+    background: url(../../img/icon/pause_normal.png);
+    background-size: 28px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#radio #pause:hover {
+    background: url(../../img/icon/pause_hover.png);
+    background-size: 29px;
+    background-position: center;
+    background-repeat: no-repeat;
+}

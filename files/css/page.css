@@ -1,0 +1,110 @@
+.page {
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    display: none;
+    opacity: 0;
+}
+
+.app.page {
+    top: 50px;
+    height: calc(100% - 50px);
+}
+
+.radio.page {
+    top: 25px;
+    height: calc(100% - 25px);
+}
+
+.dark.page {
+    background-color: #242528;
+}
+
+.light.page {
+    background-color: #f5f5f5;
+}
+
+@keyframes page_visible {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes page_invisible {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.page #crosssign {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    background: url(../img/icon/crosssign_normal.png);
+    background-size: 28px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.page #crosssign:hover {
+    background: url(../img/icon/crosssign_hover.png);
+    background-size: 29px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.dark.page #icon {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(../img/icon/app/font_icon_light.png);
+    filter: blur(8px);
+    background-size: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.light.page #icon {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(../img/icon/app/font_icon_dark.png);
+    filter: blur(8px);
+    background-size: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.page .content {
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+    -webkit-transition: .25s;
+}
+
+.page h1 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.dark.page h1 {
+    color: #999999;
+}
+
+.light.page h1 {
+    color: #4F4F4F;
+}
