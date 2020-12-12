@@ -225,8 +225,8 @@ async function quit() {
 }
 
 async function launchUpdate() {
-    await shell.openPath(updatePath)
     await saveFiles()
+    await shell.openPath(updatePath)
     app.quit()
 }
 
