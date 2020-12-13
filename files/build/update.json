@@ -16,7 +16,6 @@
         "oneClick": true,
         "allowToChangeInstallationDirectory": false,
         "perMachine": false,
-        "createDesktopShortcut": false,
         "runAfterFinish": false
     },
     "fileAssociations": {
