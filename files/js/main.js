@@ -45,7 +45,7 @@ function checkNewURL() {
 }
 
 function checkURL(url, step) {
-  let newURl
+  let newURL
   let URLConfig
 
   step0URL = `https://${url}/`
@@ -175,7 +175,7 @@ function createTab(url, endOfTabList, private) {
 
       l.setAttribute('title', appName)
 
-      changeTitleWindow(appName)
+      changeTitleWindow(`tab${tabNUM}`, appName)
 
       if (byID('search_bar_input') && frameVisibilityNeedsToChange == 0 && windowInFullscreen == 0) byID('search_bar_input').focus()
     } else {
@@ -185,7 +185,7 @@ function createTab(url, endOfTabList, private) {
 
       l.setAttribute('title', tabURL)
 
-      changeTitleWindow(tabURL)
+      changeTitleWindow(`tab${tabNUM}`, tabURL)
     }
 
     tab_location.appendChild(a)
@@ -217,12 +217,16 @@ function createTab(url, endOfTabList, private) {
     $('#search_bar_url').val('')
 
     if (private === true) {
-      webview[`tab${tabNUM}`] = { 'ready': 0, 'url': '', 'contextmenu': 0, 'private': true, 'favicon': [], 'retry': 0, 'default': 0, 'news': 1, 'audio': { 'yes': 0, 'no': 0 } }
+      webview[`tab${tabNUM}`] = { 'input': '', 'ready': 0, 'url': '', 'contextmenu': 0, 'private': true, 'favicon': [], 'retry': 0, 'default': 0, 'news': 1, 'audio': { 'yes': 0, 'no': 0 } }
     } else {
-      webview[`tab${tabNUM}`] = { 'ready': 0, 'url': '', 'contextmenu': 0, 'private': false, 'favicon': [], 'retry': 0, 'default': 0, 'news': 1, 'audio': { 'yes': 0, 'no': 0 } }
+      webview[`tab${tabNUM}`] = { 'input': '', 'ready': 0, 'url': '', 'contextmenu': 0, 'private': false, 'favicon': [], 'retry': 0, 'default': 0, 'news': 1, 'audio': { 'yes': 0, 'no': 0 } }
     }
 
-    if (tabURL === undefined || tabURL == '' || tabURL == '.') webview[`tab${tabNUM}`]['default'] = 1
+    if (tabURL === undefined || tabURL == '' || tabURL == '.') {
+      webview[`tab${tabNUM}`]['default'] = 1
+    } else {
+      webview[`tab${tabNUM}`]['input'] = tabURL
+    }
 
     tabURL = ''
     tabGetElement = byID(`tab${tabNUM}`)
@@ -285,7 +289,7 @@ function AEL(id) {
 
       if (id == tabID) {
         checkNewURL()
-        changeTitleWindow(e.url)
+        changeTitleWindow(id, e.url)
       }
 
       replaceTitle(id, e.url)
@@ -295,6 +299,8 @@ function AEL(id) {
     } else {
       checkNewURL()
     }
+
+    webview[id]['input'] = e.url
   })
   byID(id).addEventListener('close', (e) => {
     closeTab(id)
@@ -341,6 +347,7 @@ function AEL(id) {
                 createTab(prop.linkURL, false, true)
               }
             },
+            action.separator(),
             {
               label: appWords[settingFile['lang']]['contextmenu']['openlinktab'],
               visible: prop.linkURL,
@@ -480,6 +487,7 @@ function AEL(id) {
                 createTab(prop.linkURL)
               }
             },
+            action.separator(),
             {
               label: appWords[settingFile['lang']]['contextmenu']['openlinkprivatetab'],
               visible: prop.linkURL,
@@ -595,7 +603,7 @@ function AEL(id) {
   })
   byID(id).addEventListener('page-title-updated', () => {
     if (id == tabID) {
-      changeTitleWindow(byID(id).getTitle())
+      changeTitleWindow(id, byID(id).getTitle())
       replaceTitle(id, byID(id).getTitle())
     } else {
       replaceTitle(id, byID(id).getTitle())
@@ -622,7 +630,7 @@ function AEL(id) {
       if (byID(`ctrl_${tabID}_img`)) byID(`ctrl_${tabID}_img`).setAttribute('src', '../img/icon/refresh_normal.png')
       if (byID(`${tabID}_img`)) byID(`${tabID}_img`).setAttribute('src', '../img/icon/refresh_normal.png')
 
-      changeTitleWindow(e.validatedURL)
+      changeTitleWindow(id, e.validatedURL)
     }
   })
   byID(id).addEventListener('new-window', (u) => {

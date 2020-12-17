@@ -40,6 +40,8 @@ function playPauseRadio() {
   if (radioPlayPause == 0) {
     if (byID('play')) byID('play').setAttribute('id', 'pause')
 
+    $('#radio').addClass('play')
+
     checkInternetConnected(offLineNavConfig).then().catch(() => {
       if (radioPlayPause == 1) playPauseRadio()
 
@@ -54,6 +56,8 @@ function playPauseRadio() {
   } else {
     if (byID('pause')) byID('pause').setAttribute('id', 'play')
 
+    $('#radio').removeClass('play')
+
     ipcRenderer.send('close-win-radio-rpc')
     radio.pause()
 
@@ -66,6 +70,8 @@ function detectPauseRadio() {
     if (radioPlayPause == 1) {
       if (byID('pause')) byID('pause').setAttribute('id', 'play')
 
+      $('#radio').removeClass('play')
+
       ipcRenderer.send('close-win-radio-rpc')
 
       radioPlayPause = 0
@@ -74,6 +80,8 @@ function detectPauseRadio() {
   if (!radio.paused) {
     if (radioPlayPause == 0) {
       if (byID('play')) byID('play').setAttribute('id', 'pause')
+
+      $('#radio').addClass('play')
 
       checkInternetConnected(offLineNavConfig).catch(() => {
         if (radioPlayPause == 1) playPauseRadio()
@@ -134,37 +142,40 @@ setInterval(() => {
 }, 10e3)
 
 function changeVolumeToUp() {
-  slider_input_value = Math.round($('#slider_input').val()) + 10
+  sliderInputValue = Math.round($('#slider_input').val()) + 10
 
-  if (slider_input_value < 100) {
-    volume_value = `0.${slider_input_value}`
+  let volumeValue
+
+  if (sliderInputValue < 100) {
+    volumeValue = `0.${sliderInputValue}`
   } else {
-    volume_value = 1
-    slider_input_value = 100
+    volumeValue = 1
+    sliderInputValue = 100
   }
 
-  $('#slider_input').val(slider_input_value)
+  $('#slider_input').val(sliderInputValue)
   radioVolume = $('#slider_input').val()
 
-  radio.volume = volume_value
+  radio.volume = volumeValue
 }
 
 function changeVolumeToDown() {
-  slider_input_value = Math.round($('#slider_input').val()) - 10
+  let sliderInputValue = Math.round($('#slider_input').val()) - 10
+  let volumeValue
 
-  if (slider_input_value >= 10) {
-    volume_value = `0.${slider_input_value}`
-  } else if (slider_input_value < 10 && slider_input_value > 0) {
-    volume_value = `0.0${slider_input_value}`
-  } else if (slider_input_value <= 0) {
-    volume_value = 0
-    slider_input_value = 0
+  if (sliderInputValue >= 10) {
+    volumeValue = `0.${sliderInputValue}`
+  } else if (sliderInputValue < 10 && sliderInputValue > 0) {
+    volumeValue = `0.0${sliderInputValue}`
+  } else if (sliderInputValue <= 0) {
+    volumeValue = 0
+    sliderInputValue = 0
   }
 
-  $('#slider_input').val(slider_input_value)
+  $('#slider_input').val(sliderInputValue)
   radioVolume = $('#slider_input').val()
 
-  radio.volume = volume_value
+  radio.volume = volumeValue
 }
 
 function changeVolume() {
@@ -172,12 +183,12 @@ function changeVolume() {
     if ($('#slider_input').val() != 100) {
       if ($('#slider_input').val() >= 10) {
         radioVolume = $('#slider_input').val()
-        volume_value = `0.${$('#slider_input').val()}`
-        radio.volume = volume_value
+        let volumeValue = `0.${$('#slider_input').val()}`
+        radio.volume = volumeValue
       } else if ($('#slider_input').val() < 10) {
         radioVolume = $('#slider_input').val()
-        volume_value = `0.0${$('#slider_input').val()}`
-        radio.volume = volume_value
+        let volumeValue = `0.0${$('#slider_input').val()}`
+        radio.volume = volumeValue
       } else if ($('#slider_input').val() == 0) {
         radioVolume = $('#slider_input').val()
         radio.volume = 0
@@ -271,10 +282,10 @@ function setSettingValues() {
       action.paste(),
       action.separator(),
       {
-        label: appWords[settingFile['lang']]['contextmenu']['openimgwindow'],
+        label: appWords[settingFile['lang']]['contextmenu']['openimg'],
         visible: prop.mediaType == 'image',
         click: () => {
-          ipcRenderer.send('new-window-with-url', prop.srcURL)
+          ipcRenderer.send('open-file', prop.srcURL)
         }
       },
       action.separator(),
@@ -302,21 +313,22 @@ function setSettingValues() {
 
   if (settingFile['radio']['pin'] == 1) pin()
 
-  slider_input_value_config = settingFile['radio']['volume']
-  slider_input_value = slider_input_value_config
-  if (slider_input_value >= 10 && slider_input_value_config < 100) {
-    volume_value = `0.${slider_input_value}`
-  } else if (slider_input_value < 10 && slider_input_value > 0) {
-    volume_value = `0.0${slider_input_value}`
-  } else if (slider_input_value <= 0) {
-    volume_value = 0
-    slider_input_value = 0
+  let sliderInputValueConfig = settingFile['radio']['volume']
+  let sliderInputValue = sliderInputValueConfig
+  let volumeValue
+  if (sliderInputValue >= 10 && sliderInputValueConfig < 100) {
+    volumeValue = `0.${sliderInputValue}`
+  } else if (sliderInputValue < 10 && sliderInputValue > 0) {
+    volumeValue = `0.0${sliderInputValue}`
+  } else if (sliderInputValue <= 0) {
+    volumeValue = 0
+    sliderInputValue = 0
   } else {
-    volume_value = 1
-    slider_input_value = 100
+    volumeValue = 1
+    sliderInputValue = 100
   }
-  $('#slider_input').val(slider_input_value)
-  radio.volume = volume_value
+  $('#slider_input').val(sliderInputValue)
+  radio.volume = volumeValue
 
   if (byID('setting_content')) byID('setting_content').style.filter = 'blur(0px)'
   if (byID('touch')) byID('touch').style.animation = 'touch_invisible 0.25s ease forwards'
@@ -356,7 +368,7 @@ ipcRenderer.on('first-tab', (e, arg) => {
   let i = 0
 
   while (i < arg[1].length) {
-    if(arg[1][`${i}`][8] == 1) {
+    if (arg[1][`${i}`][8] == 1) {
       addDownload(arg[1][`${i}`], true)
     } else {
       addDownload(arg[1][`${i}`])

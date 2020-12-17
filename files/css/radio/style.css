@@ -42,6 +42,16 @@
 }
 
 #radio img {
+    height: 95px;
+    width: 95px;
+    margin: 15px;
+    position: absolute;
+    top: 0;
+    border-radius: 3px;
+    -webkit-transition: .3s;
+}
+
+.play#radio img {
     height: 105px;
     width: 105px;
     margin: 10px;

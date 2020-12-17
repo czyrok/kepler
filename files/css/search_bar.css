@@ -83,10 +83,6 @@
     background-color: #3D3F44;
 }
 
-#search_bar_active #search_bar_button_bookmark {
-    border-radius: 0;
-}
-
 .progress_bar {
   height: 2px;
   position: relative;

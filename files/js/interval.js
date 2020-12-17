@@ -98,3 +98,19 @@ function checkIfWindowHaveFocus() {
 }
 
 setInterval(checkIfWindowHaveFocus, 50)
+
+function recoverSearchBarInput() {
+  if (byID('search_bar_input')) {
+    let text = $.trim($('#search_bar_input').val())
+
+    if (lastTab != tabID && lastTab !== undefined) {
+      $('#search_bar_input').val(webview[tabID]['input'])
+    } else if (webview[tabID]['input'] != text) {
+      webview[tabID]['input'] = text
+    }
+
+    lastTab = tabID
+  }
+}
+
+setInterval(recoverSearchBarInput, 10)

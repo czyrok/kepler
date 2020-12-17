@@ -78,6 +78,7 @@ function setSettingValues() {
           createTab(prop.linkURL.substring(prop.linkURL.indexOf('/*~~*/link/*~~*/') + 16), true)
         }
       },
+      action.separator(),
       {
         label: appWords[settingFile['lang']]['contextmenu']['openlinkprivatetab'],
         visible: prop.linkURL.indexOf('/*~~*/link/*~~*/') != -1,

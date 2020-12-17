@@ -1,6 +1,6 @@
 {
   "name": "Kepler",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Web browser",
   "main": "./files/app.js",
   "scripts": {
@@ -14,18 +14,18 @@
   "author": "Czyrok",
   "license": "LICENSE.txt",
   "devDependencies": {
-    "electron": "^11.0.3",
+    "electron": "^11.1.0",
     "electron-builder": "^22.9.1"
   },
   "dependencies": {
-    "@cliqz/adblocker-electron": "^1.18.8",
+    "@cliqz/adblocker-electron": "^1.19.0",
     "check-internet-connected": "^2.0.5",
     "discord-rpc": "^3.1.4",
     "dragula": "^3.7.3",
     "electron-context-menu": "^2.3.0",
     "jquery": "^3.5.1",
     "node-fetch": "^2.6.1",
-    "ts-node": "^9.1.0",
-    "typescript": "^4.1.2"
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
   }
 }

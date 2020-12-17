@@ -5,11 +5,9 @@ content color
 
 1B1C1E -> frame + bookmark + popup
 
-232627 -> tab_menu (checkmark)
-
 2D2E32 -> search_bar + ctrl_tab_menu (checkmark) + menu + background_bookmark_menu
 46474E -> slider (input) + bookmark_menu
-242528 -> dark setting page + dark radio page + dark home page
+242528 -> dark setting page + dark radio page + dark home page + tab_menu (checkmark)
 
 icon color
 
@@ -41,6 +39,10 @@ button {
   border: none;
   outline-style: none;
   -webkit-transition: .1s;
+  padding: 0;
+    background-size: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 a {

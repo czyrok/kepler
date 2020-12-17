@@ -1,7 +1,7 @@
 const appWords = {
     "en": {
         "interface": {
-            "search_bar_input": "Search"
+            "searchbarinput": "Search"
         },
         "alert": {
             "online": "Internet connection restored",
@@ -37,12 +37,13 @@ const appWords = {
             "pastego": "Paste and go",
             "setting": "Open/Close the settings",
             "addbookmark": "Add the page in bookmarks",
-            "opentab": "Open a new tab",
-            "openprivatetab": "Open a new private tab",
+            "opentab": "New tab",
+            "openprivatetab": "New private tab",
             "screenshot": "Capture the page",
-            "openwindow": "Open a new window",
+            "openwindow": "New window",
             "openlinkprivatetab": "Open in new private tab",
-            "openimgprivatetab": "Open the image in new private tab"
+            "openimgprivatetab": "Open the image in new private tab",
+            "openimg": "Open the image"
         },
         "popup": {
             "name": "Name",
@@ -54,7 +55,7 @@ const appWords = {
             "update": "The update will install when you exit the browser"
         },
         "setting": {
-            "title": "Setting",
+            "title": "Settings",
             "dl": {
                 "title": "Default language"
             },
@@ -77,7 +78,7 @@ const appWords = {
             }
         },
         "sc": {
-            "title": "Shortcut",
+            "title": "Shortcuts",
             "dsc": {
                 "title": "Default Shortcuts",
                 "cv": "Open/Close the setting page",
@@ -109,7 +110,7 @@ const appWords = {
     },
     "fr": {
         "interface": {
-            "search_bar_input": "Rechercher"
+            "searchbarinput": "Rechercher"
         },
         "alert": {
             "online": "Connexion à internet rétablie",
@@ -145,12 +146,13 @@ const appWords = {
             "pastego": "Coller et aller",
             "setting": "Ouvrir/Fermer les paramètres",
             "addbookmark": "Ajouter la page dans les signets",
-            "opentab": "Ouvrir un nouvel onglet",
-            "openprivatetab": "Ouvrir un nouvel onglet privé",
+            "opentab": "Nouvel onglet",
+            "openprivatetab": "Nouvel onglet privé",
             "screenshot": "Capturer la page",
-            "openwindow": "Ouvrir une nouvelle fenêtre",
+            "openwindow": "Nouvelle fenêtre",
             "openlinkprivatetab": "Ouvrir dans un nouvel onglet privé",
-            "openimgprivatetab": "Ouvrir l'image dans un nouvel onglet privé"
+            "openimgprivatetab": "Ouvrir l'image dans un nouvel onglet privé",
+            "openimg": "Ouvrir l'image"
         },
         "popup": {
             "name": "Nom",
@@ -162,7 +164,7 @@ const appWords = {
             "update": "La mise à jour s'installera quand vous quitterez le navigateur"
         },
         "setting": {
-            "title": "Paramètre",
+            "title": "Paramètres",
             "dl": {
                 "title": "Langue par défaut"
             },
@@ -185,7 +187,7 @@ const appWords = {
             }
         },
         "sc": {
-            "title": "Raccourci",
+            "title": "Raccourcis",
             "dsc": {
                 "title": "Raccourcis par défaut",
                 "cv": "Ouvrir/Fermer la page des paramètres",

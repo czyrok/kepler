@@ -55,21 +55,21 @@ function refreshBookmark() {
 }
 
 function addBookmark(name, link, faviconLink, id, button) {
-    a = document.createElement('div')
+    let a = document.createElement('div')
     a.setAttribute('class', 'bookmark bookmark_element_next')
     a.setAttribute('id', `bookmark${bookmarkNumber}`)
     a.setAttribute('onclick', `setTimeout(() => {folderTimeoutContinue = false}, 50);goURL(\`${link}\`)`)
     a.setAttribute('title', name)
 
-    w = document.createElement('a')
+    let w = document.createElement('a')
     w.setAttribute('id', `bookmark${bookmarkNumber}_a`)
     w.setAttribute('href', `/*~~*/ui/*~~*//*~~*/bookmark/*~~*//*~~*/folder/*~~*/false/*~~*/id/*~~*/bookmark${bookmarkNumber}/*~~*/link/*~~*/${link}`)
 
-    b = document.createElement('div')
+    let b = document.createElement('div')
     b.setAttribute('class', 'bookmark_hover')
     b.setAttribute('id', `bookmark${bookmarkNumber}_hover`)
 
-    c = document.createElement('img')
+    let c = document.createElement('img')
 
     if (faviconLink === undefined || faviconLink == '') {
         c.setAttribute('src', '../img/icon/refresh_normal.png')
@@ -80,25 +80,25 @@ function addBookmark(name, link, faviconLink, id, button) {
     c.setAttribute('id', `bookmark${bookmarkNumber}_img`)
     c.setAttribute('onerror', `byID('bookmark${bookmarkNumber}_img').setAttribute('src', '../img/icon/refresh_normal.png')`)
 
-    d = document.createElement('p')
+    let d = document.createElement('p')
     d.setAttribute('class', 'gu-hide')
     d.textContent = '/*~~*/bookmark/*~~*/'
 
-    e = document.createElement('p')
+    let e = document.createElement('p')
     e.setAttribute('class', 'gu-hide')
     e.setAttribute('id', `bookmark${bookmarkNumber}_name`)
     e.textContent = name
 
-    f = document.createElement('p')
+    let f = document.createElement('p')
     f.setAttribute('class', 'gu-hide')
     f.setAttribute('id', `bookmark${bookmarkNumber}_link`)
     f.textContent = link
 
-    g = document.createElement('p')
+    let g = document.createElement('p')
     g.setAttribute('class', 'gu-hide')
     g.textContent = faviconLink
 
-    h = document.createElement('button')
+    let h = document.createElement('button')
     h.setAttribute('class', 'delete_button')
     h.setAttribute('onclick', `UI('bookmark${bookmarkNumber}')`)
 
@@ -127,14 +127,14 @@ function addBookmark(name, link, faviconLink, id, button) {
 }
 
 function addFolder(name, active, id) {
-    a = document.createElement('div')
+    let a = document.createElement('div')
     a.setAttribute('class', 'bookmark_menu_dragula bookmark_element_next')
 
-    w = document.createElement('a')
+    let w = document.createElement('a')
     w.setAttribute('id', `bookmark_menu_background${bookmarkMenuNumber}_a`)
     w.setAttribute('href', `/*~~*/ui/*~~*//*~~*/bookmark/*~~*//*~~*/folder/*~~*/true/*~~*/id/*~~*/bookmark_menu_background${bookmarkMenuNumber}`)
 
-    b = document.createElement('div')
+    let b = document.createElement('div')
 
     if (active == 1 || active === undefined || active == '') {
         b.setAttribute('class', 'bookmark_menu_background')
@@ -148,29 +148,29 @@ function addFolder(name, active, id) {
     b.setAttribute('onclick', `tempChangeBookmarkMenuVisibility('${bookmarkMenuNumber}')`)
     b.setAttribute('title', name)
 
-    c = document.createElement('button')
+    let c = document.createElement('button')
     c.setAttribute('class', 'delete_button')
     c.setAttribute('onclick', `UI('bookmark_menu_background${bookmarkMenuNumber}')`)
 
-    d = document.createElement('p')
+    let d = document.createElement('p')
     d.setAttribute('class', 'gu-hide')
     d.textContent = '/*~~*/folder/*~~*/'
 
-    e = document.createElement('p')
+    let e = document.createElement('p')
     e.setAttribute('class', 'gu-hide')
     e.setAttribute('id', `bookmark_menu_background${bookmarkMenuNumber}_name`)
     e.textContent = name
 
-    f = document.createElement('p')
+    let f = document.createElement('p')
     f.setAttribute('class', 'gu-hide')
     f.setAttribute('id', `bookmark_menu_background${bookmarkMenuNumber}_active`)
     f.textContent = active
 
-    g = document.createElement('div')
+    let g = document.createElement('div')
     g.setAttribute('class', 'bookmark_menu')
     g.setAttribute('id', `bookmark_menu${bookmarkMenuNumber}`)
 
-    h = document.createElement('p')
+    let h = document.createElement('p')
     h.setAttribute('class', 'gu-hide')
     h.textContent = '/*~~*/end/*~~*/'
 

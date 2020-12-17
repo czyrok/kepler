@@ -63,7 +63,6 @@ let firstFiles = [],
     setValueInterval,
     createWindowInterval,
 
-    updateCheck = 0,
     updateDownload = 1,
     updateRetry = 0,
     updateDownloadFinish = 0,
@@ -361,13 +360,13 @@ function createWindow() {
             winDisponibility = 0
             winWait = 0
 
-            if (updateCheck == 0) {
-                const updateSession = session.fromPartition('update')
+            const updateSession = session.fromPartition('update')
 
-                updateSession.downloadURL(updateURL)
+            updateSession.downloadURL(updateURL)
+        })
 
-                updateCheck = 1
-            }
+        win.once('closed', () => {
+            if (currentWindow == win) currentWindow = null
         })
     }
 }
@@ -444,7 +443,11 @@ if (!gotTheLock) {
 } else {
     app.on('second-instance', (e, commandLine) => {
         if (commandLine[2] !== undefined) {
-            if (currentWindow !== undefined) currentWindow.webContents.send('tab-end', commandLine[2])
+            if (currentWindow === undefined || currentWindow === null) {
+                createIntervalWindow(commandLine[2])
+            } else {
+                currentWindow.webContents.send('tab-end', commandLine[2])
+            }
         } else {
             createIntervalWindow('')
         }
@@ -473,32 +476,36 @@ if (!gotTheLock) {
         rmdirSync(updateFolderPath)
 
         updateSession.on('will-download', (e, item) => {
-            item.setSavePath(`${updateFolderPath}${item.getFilename()}`)
-            updatePath = `${updateFolderPath}${item.getFilename()}`
+            if (item.getFilename().indexOf('.exe') != -1) {
+                item.setSavePath(`${updateFolderPath}${item.getFilename()}`)
+                updatePath = `${updateFolderPath}${item.getFilename()}`
 
-            item.on('updated', (e, state) => {
-                if (state === 'interrupted') {
-                    if (updateRetry == 5) {
-                        item.cancel()
-                    } else {
-                        item.resume()
-                        updateRetry++
+                item.on('updated', (e, state) => {
+                    if (state === 'interrupted') {
+                        if (updateRetry == 5) {
+                            item.cancel()
+                        } else {
+                            item.resume()
+                            updateRetry++
+                        }
                     }
+                })
+
+                item.once('done', (e, state) => {
+                    if (state === 'completed') {
+                        updateDownloadFinish = 1
+                    }
+
+                    updateDownload = 0
+                })
+
+                if (thisUpdate == item.getFilename()) {
+                    item.cancel()
+                } else {
+                    addDownload(e, item, true)
                 }
-            })
-
-            item.once('done', (e, state) => {
-                if (state === 'completed') {
-                    updateDownloadFinish = 1
-                }
-
-                updateDownload = 0
-            })
-
-            if (thisUpdate == item.getFilename()) {
-                item.cancel()
             } else {
-                addDownload(e, item, true)
+                updateDownload = 0
             }
         })
     })
@@ -600,4 +607,12 @@ ipcMain.on('genocide', () => {
             e.close()
         }
     })
+})
+
+ipcMain.on('open-file', (e, arg) => {
+    if (currentWindow === undefined || currentWindow === null) {
+        createIntervalWindow(arg)
+    } else {
+        currentWindow.webContents.send('tab-end', arg)
+    }
 })

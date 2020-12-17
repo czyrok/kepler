@@ -35,7 +35,7 @@
     height: 25px;
     -webkit-transition: .1s;
     flex: 1 1;
-    background-color: #232627;
+    background-color: #242528;
 }
 
 .tab_content input:checked~.checkmark {
@@ -142,7 +142,7 @@
     background-size: 15px;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #232627;
+    background-color: #242528;
     right: 0;
     opacity: 0;
 }
@@ -176,7 +176,7 @@
     background-position: center;
     background-repeat: no-repeat;
     right: 0;
-    background-color: #232627;
+    background-color: #242528;
     opacity: 0;
 }
 

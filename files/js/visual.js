@@ -219,7 +219,7 @@ function download() {
 function applyLangChange(lang) {
 	if (langApp != lang) {
 		if (appWords[lang]) {
-			if (byID('search_bar_input')) byID('search_bar_input').setAttribute('placeholder', appWords[lang]['interface']['search_bar_input'])
+			if (byID('search_bar_input')) byID('search_bar_input').setAttribute('placeholder', appWords[lang]['interface']['searchbarinput'])
 
 			if (byID('lp.d.title')) byID('lp.d.title').textContent = appWords[lang]['download']['title']
 
@@ -614,12 +614,10 @@ function changeTabFocus(id) {
 		tabGetElement = byID(id)
 		tabID = id
 
-		checkNewURL()
-
 		if (tabGetElement.getURL().indexOf(':\\') != -1 || tabGetElement.getURL().indexOf(':/') != -1) {
-			changeTitleWindow(byID(`${tabID}_p`).textContent)
+			changeTitleWindow(tabID, byID(`${tabID}_p`).textContent)
 		} else {
-			changeTitleWindow(tabGetElement.getTitle())
+			changeTitleWindow(tabID, tabGetElement.getTitle())
 		}
 
 		byID(`ctrl_${id}_content`).parentNode.removeChild(byID(`ctrl_${id}_content`))
@@ -678,8 +676,8 @@ function muteTab(id) {
 	}
 }
 
-function changeTitleWindow(title) {
-	if (title == appName || title == '' || title === undefined) {
+function changeTitleWindow(id, title) {
+	if (title == appName || title == '' || title === undefined || $('#tab_menu').find(`#${id}_content`).attr('private') == 'true') {
 		win.setTitle(appName)
 	} else {
 		win.setTitle(`${title} - ${appName}`)

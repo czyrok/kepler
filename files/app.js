@@ -41,7 +41,7 @@ var electron_1 = require("electron");
 var node_fetch_1 = require("node-fetch");
 var adblocker_electron_1 = require("@cliqz/adblocker-electron");
 var template = [], menu = electron_1.Menu.buildFromTemplate(template), gotTheLock = electron_1.app.requestSingleInstanceLock(), defaultSettingFile = '{"lang":"en","se":"google","dimension":{"width":"1400","height":"800"},"dark":{"home":0,"setting":1,"download":1, "radio":1},"radio":{"name":"dancefloor","volume":"50","pin":1}}', defaultWindowFile = '{"maximized":0,"pin":0}', defaultBookmarkFile = '[]', downloadFolderPath = electron_1.app.getPath('downloads'), appDataFolderPath = electron_1.app.getPath('userData'), updateFolderPath = appDataFolderPath + "\\update\\", updateURL = 'http://update.kepler.czyrok.ovh/', thisUpdate = electron_1.app.getName() + " Update Setup " + electron_1.app.getVersion() + ".exe", storageFolderPath = appDataFolderPath + "\\storage\\", settingFilePath = storageFolderPath + "setting.json", windowFilePath = storageFolderPath + "window.json", bookmarkFilePath = storageFolderPath + "bookmark.json";
-var firstFiles = [], settingFile, bookmarkFile, windowFile, canRecoverValue = 0, winDisponibility = 0, width, height, firstTabURL = '', win, winWait = 0, radioIsOpen = 0, radioRPCIsOpen = 0, currentWindow, winRadio, winRadioRPC, downloadNUM = 0, download = [], downloadCount = 0, setValueInterval, createWindowInterval, updateCheck = 0, updateDownload = 1, updateRetry = 0, updateDownloadFinish = 0, updatePath;
+var firstFiles = [], settingFile, bookmarkFile, windowFile, canRecoverValue = 0, winDisponibility = 0, width, height, firstTabURL = '', win, winWait = 0, radioIsOpen = 0, radioRPCIsOpen = 0, currentWindow, winRadio, winRadioRPC, downloadNUM = 0, download = [], downloadCount = 0, setValueInterval, createWindowInterval, updateDownload = 1, updateRetry = 0, updateDownloadFinish = 0, updatePath;
 electron_1.app.allowRendererProcessReuse = true;
 // app.disableHardwareAcceleration()
 electron_1.Menu.setApplicationMenu(menu);
@@ -201,10 +201,10 @@ function launchUpdate() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, electron_1.shell.openPath(updatePath)];
+                case 0: return [4 /*yield*/, saveFiles()];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, saveFiles()];
+                    return [4 /*yield*/, electron_1.shell.openPath(updatePath)];
                 case 2:
                     _a.sent();
                     electron_1.app.quit();
@@ -329,11 +329,12 @@ function createWindow() {
                 win.webContents.send('pellet-visible');
             winDisponibility = 0;
             winWait = 0;
-            if (updateCheck == 0) {
-                var updateSession = electron_1.session.fromPartition('update');
-                updateSession.downloadURL(updateURL);
-                updateCheck = 1;
-            }
+            var updateSession = electron_1.session.fromPartition('update');
+            updateSession.downloadURL(updateURL);
+        });
+        win.once('closed', function () {
+            if (currentWindow == win)
+                currentWindow = null;
         });
     }
 }
@@ -399,8 +400,12 @@ if (!gotTheLock) {
 else {
     electron_1.app.on('second-instance', function (e, commandLine) {
         if (commandLine[2] !== undefined) {
-            if (currentWindow !== undefined)
+            if (currentWindow === undefined || currentWindow === null) {
+                createIntervalWindow(commandLine[2]);
+            }
+            else {
                 currentWindow.webContents.send('tab-end', commandLine[2]);
+            }
         }
         else {
             createIntervalWindow('');
@@ -425,30 +430,35 @@ else {
         });
         rmdirSync(updateFolderPath);
         updateSession.on('will-download', function (e, item) {
-            item.setSavePath("" + updateFolderPath + item.getFilename());
-            updatePath = "" + updateFolderPath + item.getFilename();
-            item.on('updated', function (e, state) {
-                if (state === 'interrupted') {
-                    if (updateRetry == 5) {
-                        item.cancel();
+            if (item.getFilename().indexOf('.exe') != -1) {
+                item.setSavePath("" + updateFolderPath + item.getFilename());
+                updatePath = "" + updateFolderPath + item.getFilename();
+                item.on('updated', function (e, state) {
+                    if (state === 'interrupted') {
+                        if (updateRetry == 5) {
+                            item.cancel();
+                        }
+                        else {
+                            item.resume();
+                            updateRetry++;
+                        }
                     }
-                    else {
-                        item.resume();
-                        updateRetry++;
+                });
+                item.once('done', function (e, state) {
+                    if (state === 'completed') {
+                        updateDownloadFinish = 1;
                     }
+                    updateDownload = 0;
+                });
+                if (thisUpdate == item.getFilename()) {
+                    item.cancel();
                 }
-            });
-            item.once('done', function (e, state) {
-                if (state === 'completed') {
-                    updateDownloadFinish = 1;
+                else {
+                    addDownload(e, item, true);
                 }
-                updateDownload = 0;
-            });
-            if (thisUpdate == item.getFilename()) {
-                item.cancel();
             }
             else {
-                addDownload(e, item, true);
+                updateDownload = 0;
             }
         });
     });
@@ -532,4 +542,12 @@ electron_1.ipcMain.on('genocide', function () {
             e.close();
         }
     });
+});
+electron_1.ipcMain.on('open-file', function (e, arg) {
+    if (currentWindow === undefined || currentWindow === null) {
+        createIntervalWindow(arg);
+    }
+    else {
+        currentWindow.webContents.send('tab-end', arg);
+    }
 });

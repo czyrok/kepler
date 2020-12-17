@@ -54,6 +54,7 @@ let frameVisibilityNeedsToChange = 0,
   webview = {},
   changeTabID,
   changeTabNUM = 2,
+  lastTab,
 
   windowFile,
   canSendWindowFile = 0,
