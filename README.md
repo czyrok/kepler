@@ -8,6 +8,7 @@ Kepler is a web browser made with the Framework Electron.
 To install packages
 
 * npm start or npm run dev
+
 To start the app
 
 ## Author
